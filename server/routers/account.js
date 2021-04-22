@@ -1,11 +1,10 @@
 const express = require("express");
 const router = new express.Router();
 const Account = require("../models/account");
+const { getAllAccounts, getAccount, createAccount } = require("../controllers/account");
 
-router.get('/accounts', async (req, res) => {
-  const accounts = await Account.find({});
-  return res.send(accounts);
-})
-
+router.get("/accounts", getAllAccounts);
+router.get("/accounts/:passportID", getAccount);
+router.post("/accounts/new", createAccount);
 
 module.exports = router;
