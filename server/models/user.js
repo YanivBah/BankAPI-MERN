@@ -4,6 +4,7 @@ const User = mongoose.model("User", {
   passportID: {
     type: String,
     required: [true, "Passport ID is required!"],
+    unique: true,
   },
   firstName: {
     type: String,
@@ -12,10 +13,6 @@ const User = mongoose.model("User", {
   lastName: {
     type: String,
     required: [true, "Last Name is required!!"],
-  },
-  birthDay: {
-    type: Date,
-    required: [true, "Birthday is required!!"],
   },
   password: {
     type: String,
