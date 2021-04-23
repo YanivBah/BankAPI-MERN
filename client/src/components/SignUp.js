@@ -10,18 +10,22 @@ const SignUp = () => {
   const refPassport = useRef(null);
   const refPassword = useRef(null);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (refFirstName.current.value && refLastName.current.value && refPassport.current.value && refPassword.current.value.length) {
+    if (
+      refFirstName.current.value &&
+      refLastName.current.value &&
+      refPassport.current.value &&
+      refPassword.current.value
+    ) {
       const newUser = {
         firstName: refFirstName.current.value,
         lastName: refLastName.current.value,
         passportID: refPassport.current.value,
-        password: refPassword.current.value
-      }
+        password: refPassword.current.value,
+      };
       console.log(newUser);
-      const response = await axios.post('/user', newUser);
+      const response = await axios.post("/user", newUser);
       if (response.status === 201) {
         setRegistered(true);
 
