@@ -1,6 +1,5 @@
 const express = require("express");
 const router = new express.Router();
-const Account = require("../models/account");
 const { getAllAccounts, getAccount, createAccount } = require("../controllers/account");
 
 router.get("/accounts", getAllAccounts);

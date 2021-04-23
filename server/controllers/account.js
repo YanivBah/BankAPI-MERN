@@ -4,11 +4,11 @@ const Account = require("../models/account");
 const getAllAccounts = async (req, res) => {
   try {
     const accounts = await Account.find({});
-    return res.send(accounts);
+    res.send(accounts);
   } catch (err) {
     res.status(400).send(err);
   }
-}
+};
 
 // Get Specific Account
 const getAccount = async (req, res) => {
@@ -18,7 +18,7 @@ const getAccount = async (req, res) => {
   } catch(err) {
     res.status(400).send(err);
   }
-}
+};
 
 // Create Account
 const createAccount = async (req, res) => {
