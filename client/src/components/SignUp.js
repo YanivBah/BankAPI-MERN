@@ -24,7 +24,6 @@ const SignUp = () => {
         passportID: refPassport.current.value,
         password: refPassword.current.value,
       };
-      console.log(newUser);
       const response = await axios.post("/user", newUser);
       if (response.status === 201) {
         setRegistered(true);

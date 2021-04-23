@@ -1,8 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
+import { UserContext } from "../UserContext";
 
 const SignIn = () => {
+  const { user, setUser } = useContext(UserContext);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [redirect, setRedirect] = useState(null);
   const refPassport = useRef(null);
   const refPassword = useRef(null);
 
@@ -17,13 +21,15 @@ const SignIn = () => {
       
       const response = await axios.post("/user/login", loginDetails);
       if (response.status === 200) {
-        // Redirect
+        await setUser(response.data);
+        setRedirect(true);
       }
     }
   }
 
     return (
       <div className="max-w-md w-full space-y-8 bg-white rounded-lg shadow-lg p-5">
+        {redirect && <Redirect to="/dashboard" />}
         <div>
           <h2 className="mt-1 text-center text-3xl font-extrabold text-gray-800">
             Sign in to your account

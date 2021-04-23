@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import {UserContext} from './UserContext';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [data, setData] = useState('Not fetched yet');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetching = async () => {
@@ -16,19 +19,22 @@ function App() {
   }, []);
 
   return (
-      <React.Fragment>
+    <React.Fragment>
+      <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
-
           <Route path="/" exact>
-            <SignIn/>
+            <SignIn />
           </Route>
 
           <Route path="/signup" exact>
-            <SignUp/>
+            <SignUp />
           </Route>
-
+          <Route path="/dashboard" exact>
+            <Dashboard/>
+          </Route>
         </BrowserRouter>
-      </React.Fragment>
+      </UserContext.Provider>
+    </React.Fragment>
   );
 }
 

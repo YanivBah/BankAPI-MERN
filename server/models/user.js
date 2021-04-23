@@ -3,20 +3,24 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User", {
   passportID: {
     type: String,
-    required: [true, "Passport ID is required!"],
+    required: true,
     unique: true,
   },
   firstName: {
     type: String,
-    required: [true, "First Name is required!!"],
+    required: true,
   },
   lastName: {
     type: String,
-    required: [true, "Last Name is required!!"],
+    required: true,
   },
   password: {
     type: String,
-    required: [true, "Password is required!"],
+    required: true,
+  },
+  account: {
+    type: String,
+    required: true,
   },
 });
 

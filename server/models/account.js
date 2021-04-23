@@ -13,6 +13,10 @@ const Account = mongoose.model("Account", {
     type: Boolean,
     default: true,
   },
+  transactions: {
+    type: Array,
+    default: [],
+  }
 });
 
 module.exports = Account;
