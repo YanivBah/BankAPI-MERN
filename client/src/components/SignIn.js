@@ -4,8 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 const SignIn = () => {
-  const { user, setUser } = useContext(UserContext);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const { setUser } = useContext(UserContext);
   const [redirect, setRedirect] = useState(null);
   const refPassport = useRef(null);
   const refPassword = useRef(null);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import {UserContext} from './UserContext';
@@ -21,30 +21,31 @@ function App() {
     <React.Fragment>
       <UserContext.Provider value={{ user, setUser, updateUser }}>
         <BrowserRouter>
-          <Route path="/" exact>
-            <SignIn />
-          </Route>
+          <Switch>
+            <Route path="/" exact>
+              <SignIn />
+            </Route>
 
-          <Route path="/signup" exact>
-            <SignUp />
-          </Route>
+            <Route path="/signup" exact>
+              <SignUp />
+            </Route>
 
-          <Route path="/dashboard" exact>
-            {user ? <Dashboard /> : <Redirect to="/" />}
-          </Route>
+            <Route path="/dashboard" exact>
+              {user ? <Dashboard /> : <Redirect to="/" />}
+            </Route>
 
-          <Route path="/deposit" exact>
-            {user ? <Deposit /> : <Redirect to="/" />}
-          </Route>
+            <Route path="/deposit" exact>
+              {user ? <Deposit /> : <Redirect to="/" />}
+            </Route>
 
-          <Route path="/withdraw" exact>
-            {user ? <Withdraw /> : <Redirect to="/" />}
-          </Route>
+            <Route path="/withdraw" exact>
+              {user ? <Withdraw /> : <Redirect to="/" />}
+            </Route>
 
-          <Route path="/transfer" exact>
-            {user ? <Transfer /> : <Redirect to="/" />}
-          </Route>
-
+            <Route path="/transfer" exact>
+              {user ? <Transfer /> : <Redirect to="/" />}
+            </Route>
+          </Switch>
         </BrowserRouter>
       </UserContext.Provider>
     </React.Fragment>

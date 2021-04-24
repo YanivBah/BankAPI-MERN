@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
-const Header = ({user}) => {
+const Header = () => {
+  const { user, setUser } = useContext(UserContext);
   const [menu, setMenu] = useState(false);
+
+  const handleLogout = () => {
+    setUser(null);
+  }
 
   useEffect(() => {
     if (menu) {
@@ -89,12 +95,12 @@ const Header = ({user}) => {
                 >
                   Transfer
                 </Link>
-                <Link
-                  to="/logout"
-                  className="bg-red-400 hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium"
+                <button
+                  className="bg-red-400 hover:bg-red-500 focus:outline-none px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={handleLogout}
                 >
                   Logout
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -115,12 +121,29 @@ const Header = ({user}) => {
             Home
           </Link>
           <Link
-            to="#"
+            to="/deposit"
             className="bg-green-400 block px-3 py-2 rounded-md text-base font-medium"
-            aria-current="page"
           >
-            Transactions
+            Deposit
           </Link>
+          <Link
+            to="/withdraw"
+            className="bg-green-400 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Withdraw
+          </Link>
+          <Link
+            to="/transfer"
+            className="bg-green-400 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Transfer
+          </Link>
+          <button
+            className="bg-red-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </nav>

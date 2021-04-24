@@ -37,10 +37,14 @@ const Transactions = ({array, user}) => {
           return (
             <div
               key={index}
-              className="grid grid-cols-3 items-center gap-20 p-4 text-center border">
+              className="grid grid-cols-3 items-center gap-20 p-4 text-center border hover:bg-gray-100 transition-colors"
+            >
               <p>{moment(trans.date).format("DD/MM/YYYY")}</p>
               <p className="capitalize">{trans.type}</p>
-              <p className={style}>{preCash}{trans.cash} $</p>
+              <p className={style}>
+                {preCash}
+                {trans.cash} $
+              </p>
             </div>
           );
         })}

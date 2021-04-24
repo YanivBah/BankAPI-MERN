@@ -1,4 +1,4 @@
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Summary from "./Summary";
 
 const Dashboard = ({ user }) => {
@@ -10,7 +10,7 @@ const Dashboard = ({ user }) => {
       <Summary user={user} />
 
       <Link to="/deposit">
-        <div className="flex p-4 border items-center gap-8">
+        <div className="flex p-4 border items-center gap-8 hover:bg-gray-100 transition-colors">
           <div className="w-14">
             <img src="/assets/deposit.svg" alt="" />
           </div>
@@ -22,7 +22,7 @@ const Dashboard = ({ user }) => {
       </Link>
 
       <Link to="/withdraw">
-        <div className="flex p-4 border border-t-0 items-center gap-8">
+        <div className="flex p-4 border border-t-0 items-center gap-8 hover:bg-gray-100 transition-colors">
           <div className="w-14">
             <img src="/assets/withdraw.svg" alt="" />
           </div>
@@ -34,7 +34,7 @@ const Dashboard = ({ user }) => {
       </Link>
 
       <Link to="/transfer">
-        <div className="flex p-4 border border-t-0 items-center gap-8">
+        <div className="flex p-4 border border-t-0 items-center gap-8 hover:bg-gray-100 transition-colors">
           <div className="w-14">
             <img src="/assets/transfer.svg" alt="" />
           </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from "axios";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const SignUp = () => {
   const [redirect, setRedirect] = useState(null);

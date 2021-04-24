@@ -5,7 +5,7 @@ import Summary from "../components/Summary";
 import axios from 'axios';
   
 const Withdraw = () => {
-  const { user, setUser, updateUser } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const cashRef = useRef(null);
 
   const handleClick = async() => {
@@ -19,7 +19,7 @@ const Withdraw = () => {
 
   return (
     <div>
-      <Header user={user} />
+      <Header />
       <main className="max-w-7xl mx-auto px-2 sm:px-10 lg:px-8 py-5">
         <Summary user={user} />
 
@@ -48,15 +48,15 @@ const Withdraw = () => {
             </div>
           </div>
 
-        <div className="flex items-center justify-center">
-          <button 
-          className="border py-2 px-4 bg-green-400 rounded-md hover:bg-green-300 text-gray-700"
-          onClick={handleClick}>
-            Withdraw
-          </button>
+          <div className="flex items-center justify-center">
+            <button
+              className="border py-2 px-4 bg-green-400 rounded-md hover:bg-green-300 text-gray-700"
+              onClick={handleClick}
+            >
+              Withdraw
+            </button>
+          </div>
         </div>
-        </div>
-
       </main>
     </div>
   );

@@ -5,7 +5,7 @@ import Summary from "../components/Summary";
 import axios from 'axios';
   
 const Transfer = () => {
-  const { user, setUser, updateUser } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const cashRef = useRef(null);
   const toRef = useRef(null);
 
@@ -21,7 +21,7 @@ const Transfer = () => {
 
   return (
     <div>
-      <Header user={user} />
+      <Header/>
       <main className="max-w-7xl mx-auto px-2 sm:px-10 lg:px-8 py-5">
         <Summary user={user} />
 
