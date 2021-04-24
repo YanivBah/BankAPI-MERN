@@ -5,22 +5,20 @@ import {UserContext} from './UserContext';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import Deposit from "./pages/Deposit";
+import Withdraw from "./pages/Withdraw";
 
 function App() {
-  const [data, setData] = useState('Not fetched yet');
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const fetching = async () => {
-      const newData = await axios.get("/accounts");
-      setData(JSON.stringify(newData.data));
-    }
-    fetching();
-  }, []);
+  const updateUser = async () => {
+    const newData = await axios.post("/user/login", { passportID: user.passportID });
+    setUser(newData.data);
+  }
 
   return (
     <React.Fragment>
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{ user, setUser, updateUser }}>
         <BrowserRouter>
           <Route path="/" exact>
             <SignIn />
@@ -29,9 +27,19 @@ function App() {
           <Route path="/signup" exact>
             <SignUp />
           </Route>
+
           <Route path="/dashboard" exact>
-            <Dashboard/>
+            {user ? <Dashboard /> : <Redirect to="/" />}
           </Route>
+
+          <Route path="/deposit" exact>
+            {user ? <Deposit /> : <Redirect to="/" />}
+          </Route>
+
+          <Route path="/withdraw" exact>
+            {user ? <Withdraw /> : <Redirect to="/" />}
+          </Route>
+
         </BrowserRouter>
       </UserContext.Provider>
     </React.Fragment>

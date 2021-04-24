@@ -66,10 +66,68 @@ const transfer = async (req, res) => {
     await toAccount.save();
     await fromAccount.save();
     res.status(201).send(transaction);
-    
   } catch(err) {
-    res.status(400).send(err)
+    res.status(400).send(err);
   }
 };
 
-module.exports = { getAllAccounts, getAccount, createAccount, transfer };
+// Deposit
+const deposit = async (req, res) => {
+  try {
+    if (req.body.cash <= 0) return res.status(400).send({err: 'need to be more than 0'}) 
+    const user = await User.findOne({ passportID: req.body.passportID });
+    if (!user) 
+      return res.status(404).send({err: 'User not found'});
+    const account = await Account.findById(user.account);
+    if (!account) 
+      return res.status(404).send({ err: "Account not found" });
+    account.cash += req.body.cash;
+
+    const transaction = {
+      type: 'deposit',
+      cash: req.body.cash,
+      date: new Date()
+    }
+    account.transactions.unshift(transaction);
+    await account.save();
+    res.status(201).send(transaction);
+  } catch(err) {
+    res.status(400).send(err);
+  }
+};
+
+// Withdraw
+const withdraw = async (req, res) => {
+  try {
+    const user = await User.findOne({ passportID: req.body.passportID });
+    if (!user) 
+    return res.status(404).send({ err: "User not found" });
+    const account = await Account.findById(user.account);
+    if (!account) 
+    return res.status(404).send({ err: "Account not found" });
+    const isEnough = req.body.cash <= account.cash + account.credit;
+    if (!isEnough) 
+    return res.status(400).send({ err: "Not enough money" });
+    account.cash -= req.body.cash;
+
+    const transaction = {
+      type: "withdraw",
+      cash: req.body.cash,
+      date: new Date(),
+    };
+    account.transactions.unshift(transaction);
+    await account.save();
+    res.status(201).send(transaction);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+};
+
+module.exports = {
+  getAllAccounts,
+  getAccount,
+  createAccount,
+  transfer,
+  deposit,
+  withdraw,
+};

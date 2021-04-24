@@ -66,7 +66,7 @@ const Header = ({user}) => {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <Link
-                  to="#"
+                  to="/dashboard"
                   className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                   aria-current="page"
                 >
@@ -92,7 +92,7 @@ const Header = ({user}) => {
       <div className={menu ? "" : "sm:hidden hidden"} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
-            to="#"
+            to="/dashboard"
             className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
             aria-current="page"
           >
