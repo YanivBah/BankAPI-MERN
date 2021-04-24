@@ -15,7 +15,7 @@ const Summary = ({user}) => {
               </svg>
             </div>
             <div className="flex flex-col justify-center">
-              <div className="text-lg">Current Balance</div>
+              <div className="text-md md:text-lg">Current Balance</div>
               <div className="text-md text-gray-400">${user.account.cash}</div>
             </div>
           </div>
@@ -36,7 +36,7 @@ const Summary = ({user}) => {
               </svg>
             </div>
             <div className="flex flex-col justify-center">
-              <div className="text-lg">Credit</div>
+              <div className="text-md md:text-lg">Credit</div>
               <div className="text-md text-gray-400">
                 ${user.account.credit}
               </div>

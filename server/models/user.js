@@ -5,6 +5,10 @@ const User = mongoose.model("User", {
     type: String,
     required: true,
     unique: true,
+    validate(val) {
+      const regex = /^\d+$/;
+      if (!regex.test(val)) throw new Error({err: 'Only numbers'})
+    }
   },
   firstName: {
     type: String,
@@ -17,6 +21,7 @@ const User = mongoose.model("User", {
   password: {
     type: String,
     required: true,
+    min: 6,
   },
   account: {
     type: String,

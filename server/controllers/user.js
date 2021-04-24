@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const Account = require("../models/account");
-const { ObjectId } = require("mongoose");
 
 // Create New User
 const createUser = async (req, res) => {

@@ -4,11 +4,9 @@ import Summary from "./Summary";
 const Dashboard = ({ user }) => {
   return (
     <main className="max-w-7xl mx-auto px-2 sm:px-10 lg:px-8 py-5">
-      <div className="relative flex items-center justify-between h-16">
-        <h1 className="text-3xl">
-          Welcome {user.firstName} {user.lastName}!
-        </h1>
-      </div>
+      <h1 className="text-3xl text-center sm:text-left mb-5">
+        Welcome {user.firstName} {user.lastName}!
+      </h1>
       <Summary user={user} />
 
       <Link to="/deposit">

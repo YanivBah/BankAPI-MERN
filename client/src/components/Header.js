@@ -67,16 +67,33 @@ const Header = ({user}) => {
               <div className="flex space-x-4">
                 <Link
                   to="/dashboard"
-                  className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  aria-current="page"
+                  className="bg-green-400 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
                 </Link>
                 <Link
-                  to="#"
+                  to="/deposit"
                   className="bg-green-400 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Transactions
+                  Deposit
+                </Link>
+                <Link
+                  to="/withdraw"
+                  className="bg-green-400 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Withdraw
+                </Link>
+                <Link
+                  to="/transfer"
+                  className="bg-green-400 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Transfer
+                </Link>
+                <Link
+                  to="/logout"
+                  className="bg-red-400 hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Logout
                 </Link>
               </div>
             </div>
@@ -93,10 +110,9 @@ const Header = ({user}) => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             to="/dashboard"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-            aria-current="page"
+            className="bg-green-400 block px-3 py-2 rounded-md text-base font-medium"
           >
-            Dashboard
+            Home
           </Link>
           <Link
             to="#"

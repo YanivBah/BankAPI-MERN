@@ -16,7 +16,7 @@ function App() {
     const newData = await axios.post("/user/login", { passportID: user.passportID });
     setUser(newData.data);
   }
-
+  
   return (
     <React.Fragment>
       <UserContext.Provider value={{ user, setUser, updateUser }}>
@@ -44,6 +44,7 @@ function App() {
           <Route path="/transfer" exact>
             {user ? <Transfer /> : <Redirect to="/" />}
           </Route>
+
         </BrowserRouter>
       </UserContext.Provider>
     </React.Fragment>

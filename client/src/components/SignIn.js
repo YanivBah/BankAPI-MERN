@@ -12,7 +12,6 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (refPassport.current.value && refPassword.current.value.length) {
       const loginDetails = {
         passportID: refPassport.current.value,
@@ -20,10 +19,8 @@ const SignIn = () => {
       };
       
       const response = await axios.post("/user/login", loginDetails);
-      if (response.status === 200) {
-        await setUser(response.data);
-        setRedirect(true);
-      }
+      await setUser(response.data);
+      setRedirect(true);
     }
   }
 
@@ -41,8 +38,8 @@ const SignIn = () => {
             </Link>
           </p>
         </div>
-
         <form action="#" className="mt-8 space-y-6" onSubmit={handleSubmit}>
+
           <div className="rounded-md -space-y-px">
             <div>
               <input
