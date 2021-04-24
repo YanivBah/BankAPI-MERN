@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
+import Transfer from "./pages/Transfer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +41,9 @@ function App() {
             {user ? <Withdraw /> : <Redirect to="/" />}
           </Route>
 
+          <Route path="/transfer" exact>
+            {user ? <Transfer /> : <Redirect to="/" />}
+          </Route>
         </BrowserRouter>
       </UserContext.Provider>
     </React.Fragment>
