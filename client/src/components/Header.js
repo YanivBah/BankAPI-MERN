@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link, Redirect } from "react-router-dom";
 
-const Header = (user) => {
+const Header = ({user}) => {
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {
@@ -17,14 +18,14 @@ const Header = (user) => {
             <button
               onClick={() => setMenu(!menu)}
               type="button"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
               {!menu && (
                 <svg
-                  class="block h-6 w-6"
+                  className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -32,16 +33,16 @@ const Header = (user) => {
                   aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
               )}
               {menu && (
                 <svg
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -62,27 +63,27 @@ const Header = (user) => {
             <div className="flex-shrink-0 flex items-center">
               <h3 className="text-3xl text-gray-200 font-bold">myBank</h3>
             </div>
-            <div class="hidden sm:block sm:ml-6">
-              <div class="flex space-x-4">
-                <a
-                  href="# "
+            <div className="hidden sm:block sm:ml-6">
+              <div className="flex space-x-4">
+                <Link
+                  to="#"
                   className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                   aria-current="page"
                 >
                   Home
-                </a>
-                <a
-                  href="# "
+                </Link>
+                <Link
+                  to="#"
                   className="bg-green-400 hover:bg-green-500 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Transactions
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <p className="text-xs text-gray-400 hover:text-white">
-              Passport ID: {user.user && user.user.passportID}
+              Passport ID: {user && user.passportID}
             </p>
           </div>
         </div>
@@ -90,20 +91,20 @@ const Header = (user) => {
 
       <div className={menu ? "" : "sm:hidden hidden"} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a
-            href="# "
+          <Link
+            to="#"
             className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
             aria-current="page"
           >
             Dashboard
-          </a>
-          <a
-            href="# "
+          </Link>
+          <Link
+            to="#"
             className="bg-green-400 block px-3 py-2 rounded-md text-base font-medium"
             aria-current="page"
           >
             Transactions
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

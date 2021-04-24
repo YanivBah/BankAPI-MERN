@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext } from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { Link, Redirect } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 const SignIn = () => {
@@ -36,9 +36,9 @@ const SignIn = () => {
           </h2>
           <p className="mt-2 text-center">
             Or
-            <a href="/signup" className="ml-1 text-green-600">
+            <Link to="/signup" className="ml-1 text-green-600">
               sign up now
-            </a>
+            </Link>
           </p>
         </div>
 
